@@ -1,0 +1,365 @@
+/* Government Portal Design System */
+:root {
+    --gov-blue: #003366;
+    /* Deep official blue */
+    --gov-orange: #FF9933;
+    /* Saffron/Transportation orange */
+    --gov-green: #128807;
+    /* Growth/Official green */
+    --gov-light-bg: #f4f7f6;
+    --gov-white: #ffffff;
+    --gov-gray: #e0e0e0;
+    --text-dark: #2c3e50;
+    --text-light: #ffffff;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --radius: 8px;
+    --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+body {
+    background-color: var(--gov-light-bg);
+    height: 100vh;
+    height: 100dvh;
+    /* Dynamic viewport height for mobile */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+header {
+    background: var(--gov-white);
+    height: 80px;
+    padding: 0 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: var(--shadow);
+    border-bottom: 4px solid var(--gov-blue);
+    z-index: 1000;
+    flex-shrink: 0;
+}
+
+.gov-branding {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.gov-logo {
+    background: var(--gov-blue);
+    padding: 6px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45px;
+    height: 45px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+}
+
+.gov-title h1 {
+    font-size: 1.4rem;
+    color: var(--gov-blue);
+    margin: 0;
+    font-weight: 800;
+}
+
+.gov-title p {
+    font-size: 0.75rem;
+    color: #666;
+    margin: 0;
+    font-weight: 500;
+}
+
+/* Split-Screen Layout */
+.main-wrapper {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+.left-image-pane {
+    width: 35%;
+    height: 100%;
+    background-image: linear-gradient(rgba(0, 51, 102, 0.4), rgba(0, 51, 102, 0.6)),
+        url('https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=2069&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+    border-right: 5px solid var(--gov-orange);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding: 40px;
+    position: relative;
+    transition: var(--transition);
+}
+
+.left-image-pane::before {
+    content: "TimeMyBus";
+    color: white;
+    font-size: 3.5rem;
+    font-weight: 900;
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+    letter-spacing: -1.5px;
+    text-align: right;
+}
+
+/* Main Chat Section */
+.chat-section {
+    flex: 1;
+    background: var(--gov-white);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+}
+
+#chat-container {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+    background: #fdfdfd;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    scroll-behavior: smooth;
+}
+
+/* Message Styles */
+.message {
+    max-width: 85%;
+    padding: 14px 18px;
+    border-radius: var(--radius);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.bot-message {
+    align-self: flex-start;
+    background: #f0f4f8;
+    color: var(--text-dark);
+    border-left: 5px solid var(--gov-blue);
+    border-bottom-left-radius: 2px;
+}
+
+.user-message {
+    align-self: flex-end;
+    background: var(--gov-blue);
+    color: var(--text-light);
+    border-bottom-right-radius: 2px;
+}
+
+/* Bus Card Styles */
+.bus-card {
+    background: white;
+    border: 1px solid var(--gov-gray);
+    padding: 16px;
+    border-radius: var(--radius);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-left: 6px solid var(--gov-green);
+    margin-top: 8px;
+    transition: var(--transition);
+}
+
+.bus-card:hover {
+    transform: translateX(4px);
+    box-shadow: var(--shadow);
+    border-left-color: var(--gov-orange);
+}
+
+.bus-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.bus-name {
+    font-weight: 700;
+    color: var(--gov-blue);
+}
+
+.bus-location {
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.bus-time {
+    background: var(--gov-orange);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-weight: 800;
+}
+
+/* Suggestions Area */
+.suggestions-container {
+    display: flex;
+    gap: 10px;
+    padding: 12px 20px;
+    background: #f8f9fa;
+    overflow-x: auto;
+    border-top: 1px solid var(--gov-gray);
+    -webkit-overflow-scrolling: touch;
+}
+
+.suggestions-container::-webkit-scrollbar {
+    height: 0;
+}
+
+.suggestion-chip {
+    background: white;
+    border: 1.5px solid var(--gov-blue);
+    color: var(--gov-blue);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: var(--transition);
+}
+
+.suggestion-chip:hover {
+    background: var(--gov-blue);
+    color: white;
+}
+
+/* Input Controls */
+.input-area {
+    padding: 16px 20px;
+    background: #f8f9fa;
+    border-top: 1px solid var(--gov-gray);
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.gov-select,
+input {
+    height: 48px;
+    padding: 0 16px;
+    border: 1.5px solid #d1d5db;
+    border-radius: 6px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.gov-select:focus,
+input:focus {
+    border-color: var(--gov-blue);
+}
+
+.gov-select {
+    background: white;
+    font-weight: 600;
+    color: var(--gov-blue);
+    min-width: 160px;
+}
+
+input {
+    flex: 1;
+}
+
+button {
+    height: 48px;
+    padding: 0 24px;
+    background: var(--gov-blue);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+button:hover {
+    background: #002244;
+    transform: translateY(-1px);
+}
+
+/* Footer */
+.gov-footer {
+    height: 40px;
+    background: var(--gov-blue);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.75rem;
+}
+
+/* Responsive Fixes */
+@media (max-width: 850px) {
+    .main-wrapper {
+        flex-direction: column;
+    }
+
+    .left-image-pane {
+        width: 100%;
+        height: 220px;
+        border-right: none;
+        border-bottom: 5px solid var(--gov-orange);
+        padding: 20px;
+    }
+
+    .left-image-pane::before {
+        font-size: 2.2rem;
+    }
+}
+
+@media (max-width: 600px) {
+    header {
+        height: 70px;
+    }
+
+    .gov-title h1 {
+        font-size: 1.1rem;
+    }
+
+    .input-area {
+        flex-direction: column;
+        height: auto;
+        padding-bottom: 30px;
+        /* Safe area for mobile gestures */
+    }
+
+    .gov-select,
+    input,
+    button {
+        width: 100%;
+    }
+
+    .bus-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .bus-time {
+        width: 100%;
+        text-align: center;
+    }
+}

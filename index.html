@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Online Chatbot | Bus Timing Information Portal</title>
+    <meta name="description" content="Official Bus Timing Information System. ">
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <div class="gov-top-bar"></div>
+
+    <header>
+        <div class="gov-branding">
+            <div class="gov-logo" id="logo-container">
+                <!-- Image will be injected here -->
+                <svg viewBox="0 0 24 24" fill="white" width="40" height="40">
+                    <path
+                        d="M18 11h-1.5c.28 0 .5-.22.5-.5V10h1.5v.5c0 .28.22.5.5.5s.5-.22.5-.5V8c0-1.1-.9-2-2-2h-3V5c0-1.1-.9-2-2-2S9 3.9 9 5v1H6c-1.1 0-2 .9-2 2v6c0 1.1.9 2 2 2h1.5c-.28 0-.5.22-.5.5v.5H5v1h1.5c.28 0 .5-.22.5-.5v-.5H18c1.1 0 2-.9 2-2V11c0-.28-.22-.5-.5-.5s-.5.22-.5.5zm-5-6h2v1h-2V5zm-2 0h2v1h-2V5zM6 8h12v3H6V8zm0 7v-3h12v3H6z">
+                    </path>
+                </svg>
+            </div>
+            <div class="gov-title">
+                <h1>Time My Bus</h1>
+                <p>Local Bus Timing Chatbot</p>
+            </div>
+        </div>
+        <div class="gov-status">
+            <span style="color: var(--gov-green)">● Chatbot Active</span>
+        </div>
+    </header>
+
+    <div class="main-wrapper">
+        <div class="left-image-pane"></div>
+
+
+
+        <main class="chat-section">
+            <div id="chat-container">
+                <!-- Official communications here -->
+            </div>
+
+            <div class="suggestions-container" id="suggestions">
+                <div class="suggestion-chip" id="all-timings-chip"
+                    style="display: none; background: var(--gov-orange); color: white; border-color: var(--gov-orange); font-weight: bold;">
+                    Show All Timings</div>
+                <div class="suggestion-chip">Morning</div>
+                <div class="suggestion-chip">Afternoon</div>
+                <div class="suggestion-chip">Evening</div>
+                <div class="suggestion-chip">Night</div>
+
+            </div>
+            <div class="input-area">
+                <select id="route-select" class="gov-select">
+                    <option value="" disabled selected>Select Route</option>
+                    <option value="Karur to Erode">Karur - Erode</option>
+                    <option value="Erode to Karur">Erode - Karur</option>
+                    <option value="Chennai to Madurai">Chennai - Madurai</option>
+                    <option value="Chennai to Coimbatore">Chennai - Coimbatore</option>
+                    <option value="Salem to Erode">Salem - Erode</option>
+                    <option value="Madurai to Kanyakumari">Madurai - Kanyakumari</option>
+                    <option value="Trichy to Tanjore">Trichy - Tanjore</option>
+                    <option value="Chennai to Trichy">Chennai - Trichy</option>
+                    <option value="Palani to Pollachi">Palani - Pollachi</option>
+                    <option value="Chennai to Bangalore">Chennai - Bangalore</option>
+                    <option value="Salem to Coimbatore">Salem - Coimbatore</option>
+                    <option value="Trichy to Madurai">Trichy - Madurai</option>
+                    <option value="Vellore to Chennai">Vellore - Chennai</option>
+                    <option value="Chennai to Nagercoil">Chennai - Nagercoil</option>
+                </select>
+                <input type="text" id="user-input" placeholder="Enter bus name or time " autocomplete="off">
+                <button id="send-btn">Search Bus</button>
+            </div>
+        </main>
+    </div>
+    </div>
+
+    <footer class="gov-footer">
+        <p>&copy; Design and Developed by Dharshan </p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
